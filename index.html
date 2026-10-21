@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Link Saver</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side glass">
+    <div class="brand"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>Link Saver</div>
+    <button class="btn pri" id="newF" style="justify-content:center">New folder</button>
+    <nav class="folders" id="folders" aria-label="Folders"></nav>
+    <button class="btn" id="imp">Import links</button>
+  </aside>
+  <main class="main">
+    <section class="head glass">
+      <div><h1 id="title">Folder</h1><p id="sub"></p></div>
+      <div class="row">
+        <button class="btn" id="ren">Rename</button>
+        <button class="btn dng" id="del">Delete</button>
+        <button class="btn pri" id="exp">Export &amp; share</button>
+      </div>
+    </section>
+    <section class="adder glass">
+      <input class="u" id="url" type="text" inputmode="url" placeholder="Paste a link to save in this folder" aria-label="Link URL">
+      <input class="t" id="ttl" type="text" placeholder="Title (optional)" aria-label="Title">
+      <button class="btn pri" id="add">Save link</button>
+    </section>
+    <div class="tools"><input class="search" id="q" type="search" placeholder="Search this folder" aria-label="Search links"></div>
+    <section class="grid" id="grid"></section>
+  </main>
+</div>
+
+<div class="scrim" id="mExp"><div class="modal glass" role="dialog" aria-modal="true" aria-label="Export">
+  <h2>Export &amp; share</h2>
+  <div class="seg" id="scope"><button data-v="one" class="on">This folder</button><button data-v="all">All folders</button></div>
+  <div class="seg" id="fmt"><button data-v="md" class="on">Markdown</button><button data-v="json">JSON</button><button data-v="code">Share code</button></div>
+  <textarea id="out" readonly aria-label="Export output"></textarea>
+  <p class="host" id="hint" style="white-space:normal"></p>
+  <div class="row"><button class="btn pri" id="copy">Copy</button><button class="btn" id="nshare">Share…</button><button class="btn" data-close>Close</button></div>
+</div></div>
+
+<div class="scrim" id="mImp"><div class="modal glass" role="dialog" aria-modal="true" aria-label="Import">
+  <h2>Import links</h2>
+  <p class="host" style="white-space:normal;margin:0">Paste a Link Saver share code or JSON export. Imported folders are added alongside yours.</p>
+  <textarea id="inp" placeholder="Paste share code or JSON here" aria-label="Import data"></textarea>
+  <div class="row"><button class="btn pri" id="doImp">Import</button><button class="btn" data-close>Cancel</button></div>
+</div></div>
+
+<div class="scrim" id="mF"><div class="modal glass" role="dialog" aria-modal="true" aria-label="Folder">
+  <h2 id="fh">New folder</h2>
+  <input id="fname" type="text" maxlength="40" placeholder="Folder name" aria-label="Folder name">
+  <div class="sw" id="sw" role="radiogroup" aria-label="Folder color"></div>
+  <div class="row"><button class="btn pri" id="fok">Save folder</button><button class="btn" data-close>Cancel</button></div>
+</div></div>
+<div class="scrim" id="mP"><div class="modal player glass" role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="pm"><h2 id="ptitle">Video</h2><div class="row"><a class="btn" id="pori" href="#" target="_blank" rel="noopener noreferrer">Open original</a><button class="btn pri" data-close>Close</button></div></div>
+  <div class="frame" id="pframe"></div>
+  <p class="host" style="white-space:normal;margin:0">Playing inside Link Saver. If a video stays blank, the site may block embedding. Use Open original.</p>
+</div></div>
+<div class="toast glass" id="toast" role="status"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
